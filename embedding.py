@@ -1,6 +1,8 @@
 import requests
 import json
 
+from chromadb.utils import embedding_functions
+
 class CustomEmbeddingFunction:
     def __init__(self, api_path, api_key):
         self.api_key = api_key
@@ -33,3 +35,17 @@ class CustomEmbeddingFunction:
 
 # Example usage:
 # Replace 'your_api_path' and 'your_api_key' with actual values
+
+
+
+def generate_embeddings(data,type="default" ):
+    embeddings = []
+
+
+    if(type == 'default'):
+        embeder = embedding_functions.DefaultEmbeddingFunction()
+        embeddings = embeder(data)
+         
+
+    return embeddings
+    
